@@ -51,6 +51,14 @@ const createResumeApp = () => {
             text-decoration: underline;
         }
 
+        title {
+            display: block;
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+            color: #444;
+        }
+
         section {
             padding: 20px;
             margin: 10px;
@@ -98,6 +106,11 @@ const createResumeApp = () => {
         }
     `;
     document.head.appendChild(styles);
+
+    // Add title to the resume
+    const title = document.createElement('title');
+    title.innerText = 'Resume - RAJAT SHARAN';
+    document.head.appendChild(title);
 
     // Add header
     const header = document.createElement('header');
