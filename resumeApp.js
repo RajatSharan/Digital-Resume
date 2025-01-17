@@ -1,10 +1,10 @@
-// Responsive Web Application to Display Resume with ATS Optimization and Visual Enhancements
+// Resume Web Application with Modern Template Design and ATS Optimization
 
 const createResumeApp = () => {
     const app = document.createElement('main');
     app.id = 'resume-app';
 
-    // Add styles for responsiveness and visual impact
+    // Add modern template styles
     const styles = document.createElement('style');
     styles.innerHTML = `
         * {
@@ -14,74 +14,83 @@ const createResumeApp = () => {
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f4;
+            background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
             color: #333;
             padding: 20px;
         }
 
         #resume-app {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            padding: 20px;
-        }
-
-        header, section {
-            margin-bottom: 20px;
         }
 
         header {
             text-align: center;
             background: linear-gradient(to right, #007BFF, #00C6FF);
             color: white;
-            padding: 15px 10px;
-            border-radius: 8px 8px 0 0;
+            padding: 20px 15px;
         }
 
         header h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         header p {
-            font-size: 14px;
+            font-size: 16px;
+        }
+
+        header a {
+            color: #f4f4f4;
+            text-decoration: underline;
         }
 
         section {
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
             background: #f9f9f9;
+            border: 1px solid #ddd;
             position: relative;
         }
 
         section h2 {
-            font-size: 18px;
+            font-size: 20px;
             color: #444;
             margin-bottom: 10px;
         }
 
-        ul {
+        section ul {
             list-style-type: disc;
             margin-left: 20px;
         }
 
-        ul li {
-            margin-bottom: 5px;
+        section ul li {
+            margin-bottom: 8px;
         }
 
         section img {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
+            top: 15px;
+            right: 15px;
+            width: 60px;
+            height: 60px;
             opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #666;
+            background: #eaeaea;
+            border-top: 1px solid #ccc;
         }
 
         @media (max-width: 600px) {
@@ -90,11 +99,11 @@ const createResumeApp = () => {
             }
 
             header h1 {
-                font-size: 20px;
+                font-size: 24px;
             }
 
             header p {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
     `;
@@ -104,16 +113,17 @@ const createResumeApp = () => {
     const header = document.createElement('header');
     header.innerHTML = `
         <h1>RAJAT SHARAN</h1>
-        <p>Email: <a href="mailto:errajatsharan@gmail.com" style="color: #fff; text-decoration: underline;">errajatsharan@gmail.com</a> | Phone: +91-8692985111</p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/rajat-sharan-15a19244" target="_blank" style="color: #fff; text-decoration: underline;">linkedin.com/in/rajat-sharan-15a19244</a> | Portfolio: <a href="https://rajatsharan.github.io/Profile" target="_blank" style="color: #fff; text-decoration: underline;">rajatsharan.github.io/Profile</a></p>
+        <p>Email: <a href="mailto:errajatsharan@gmail.com">errajatsharan@gmail.com</a> | Phone: +91-8692985111</p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/rajat-sharan-15a19244" target="_blank">linkedin.com/in/rajat-sharan-15a19244</a> | Portfolio: <a href="https://rajatsharan.github.io/Profile" target="_blank">rajatsharan.github.io/Profile</a></p>
     `;
     app.appendChild(header);
 
-    // Add sections with images
+    // Add sections with modern design
     const sections = [
         {
             title: 'Professional Summary',
             content: `Accomplished Automation Tester with over 10 years of experience in driving API and UI automation testing. Expertise in designing and implementing test automation frameworks, optimizing CI/CD pipelines, and delivering scalable, high-performance software solutions.`,
+            img: 'https://via.placeholder.com/60?text=PS'
         },
         {
             title: 'Key Skills',
@@ -129,6 +139,7 @@ const createResumeApp = () => {
                     <li>Additional Skills: XPath, CSS Selectors, Channel Integration Testing, API Automation</li>
                 </ul>
             `,
+            img: 'https://via.placeholder.com/60?text=KS'
         },
         {
             title: 'Professional Experience',
@@ -139,10 +150,12 @@ const createResumeApp = () => {
                     <li><strong>Test Engineer</strong>, Datamatics Global Services – Mumbai (Nov 2014 – Oct 2016): Conducted comprehensive functional and regression testing.</li>
                 </ul>
             `,
+            img: 'https://via.placeholder.com/60?text=PE'
         },
         {
             title: 'Education',
             content: `B.Tech in Information Technology, Arya Institute of Engineering & Technology, Rajasthan Technical University (2013)`,
+            img: 'https://via.placeholder.com/60?text=ED'
         },
         {
             title: 'Certifications',
@@ -153,6 +166,7 @@ const createResumeApp = () => {
                     <li>ISTQB Foundation Level: ITB India (August 2014)</li>
                 </ul>
             `,
+            img: 'https://via.placeholder.com/60?text=CT'
         },
         {
             title: 'Achievements',
@@ -163,6 +177,7 @@ const createResumeApp = () => {
                     <li>Recognized with [Employer Award/Recognition] for exceptional contributions to software quality and process optimization.</li>
                 </ul>
             `,
+            img: 'https://via.placeholder.com/60?text=AC'
         }
     ];
 
@@ -181,6 +196,13 @@ const createResumeApp = () => {
         sectionEl.appendChild(content);
         app.appendChild(sectionEl);
     });
+
+    // Add footer
+    const footer = document.createElement('footer');
+    footer.innerHTML = `
+        © 2025 RAJAT SHARAN. All Rights Reserved.
+    `;
+    app.appendChild(footer);
 
     document.body.appendChild(app);
 };
