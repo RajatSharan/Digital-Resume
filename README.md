@@ -1,1 +1,2 @@
-# Resume
+# Digital-Resume
+Digital-Resume is a web-based application designed to help users easily create and manage their professional resumes. This app allows you to input personal information, skills, work experience, and education details, generating a professional-looking digital resume. It provides a user-friendly interface with customizable templates and export options for PDF, making it perfect for job seekers, freelancers, or anyone looking to maintain an up-to-date resume. Built with modern web technologies, this project demonstrates the power of simplicity and ease of use in creating digital resumes.
