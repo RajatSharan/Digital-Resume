@@ -1,2 +1,50 @@
-# Digital-Resume
-Digital-Resume is a web-based application designed to help users easily create and manage their professional resumes. This app allows you to input personal information, skills, work experience, and education details, generating a professional-looking digital resume. It provides a user-friendly interface with customizable templates and export options for PDF, making it perfect for job seekers, freelancers, or anyone looking to maintain an up-to-date resume. Built with modern web technologies, this project demonstrates the power of simplicity and ease of use in creating digital resumes.
+A modern and responsive web application to showcase a professional resume, optimized for Applicant Tracking Systems (ATS). Built with JavaScript, HTML, and CSS, it combines clean design with ATS-friendly content.
+
+Features
+
+Responsive Design: Adjusts to mobile, tablet, and desktop screens.
+
+Modern Styling: Clean and professional look with CSS3.
+
+ATS Optimization: Ensures keyword extraction and readability for ATS software.
+
+Dynamic Rendering: Content is dynamically created with JavaScript.
+
+Sections Included
+
+Professional Summary
+
+Key Skills
+
+Professional Experience
+
+Education
+
+Certifications
+
+Achievements
+
+Usage
+
+Clone the repository or download the source code.
+
+Open index.html in a web browser.
+
+The resume will load dynamically.
+
+Make It Public
+
+Host your resume online using:
+
+GitHub Pages: Commit and deploy from the repository settings.
+
+Netlify or Vercel: Drag-and-drop deployment for quick hosting.
+
+Customization
+
+Content: Edit the resume.js file to update details.
+
+Styling: Modify CSS rules in the style block in resume.js.
+
+Created By: Rajat SharanContact: errajatsharan@gmail.comLinkedIn: linkedin.com/in/rajat-sharan-15a19244Portfolio: rajatsharan.github.io/Profile
+
