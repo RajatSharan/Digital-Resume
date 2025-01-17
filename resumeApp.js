@@ -57,7 +57,6 @@ const createResumeApp = () => {
             border-radius: 8px;
             background: #f9f9f9;
             border: 1px solid #ddd;
-            position: relative;
         }
 
         section h2 {
@@ -73,15 +72,6 @@ const createResumeApp = () => {
 
         section ul li {
             margin-bottom: 8px;
-        }
-
-        section img {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 60px;
-            height: 60px;
-            opacity: 0.8;
         }
 
         footer {
@@ -122,8 +112,7 @@ const createResumeApp = () => {
     const sections = [
         {
             title: 'Professional Summary',
-            content: `Accomplished Automation Tester with over 10 years of experience in driving API and UI automation testing. Expertise in designing and implementing test automation frameworks, optimizing CI/CD pipelines, and delivering scalable, high-performance software solutions.`,
-            img: 'https://via.placeholder.com/60?text=PS'
+            content: `Accomplished Automation Tester with over 10 years of experience in driving API and UI automation testing. Expertise in designing and implementing test automation frameworks, optimizing CI/CD pipelines, and delivering scalable, high-performance software solutions.`
         },
         {
             title: 'Key Skills',
@@ -138,8 +127,7 @@ const createResumeApp = () => {
                     <li>Methodologies: Agile, Scrum, TDD, BDD</li>
                     <li>Additional Skills: XPath, CSS Selectors, Channel Integration Testing, API Automation</li>
                 </ul>
-            `,
-            img: 'https://via.placeholder.com/60?text=KS'
+            `
         },
         {
             title: 'Professional Experience',
@@ -149,13 +137,11 @@ const createResumeApp = () => {
                     <li><strong>Senior QA Engineer</strong>, Dotsquares – Jaipur (Nov 2016 – Oct 2022): Automated API workflows ensuring flawless backend functionality.</li>
                     <li><strong>Test Engineer</strong>, Datamatics Global Services – Mumbai (Nov 2014 – Oct 2016): Conducted comprehensive functional and regression testing.</li>
                 </ul>
-            `,
-            img: 'https://via.placeholder.com/60?text=PE'
+            `
         },
         {
             title: 'Education',
-            content: `B.Tech in Information Technology, Arya Institute of Engineering & Technology, Rajasthan Technical University (2013)`,
-            img: 'https://via.placeholder.com/60?text=ED'
+            content: `B.Tech in Information Technology, Arya Institute of Engineering & Technology, Rajasthan Technical University (2013)`
         },
         {
             title: 'Certifications',
@@ -165,8 +151,7 @@ const createResumeApp = () => {
                     <li>Certified Scrum Product Owner (CSPO): Scrum Alliance (June 2022)</li>
                     <li>ISTQB Foundation Level: ITB India (August 2014)</li>
                 </ul>
-            `,
-            img: 'https://via.placeholder.com/60?text=CT'
+            `
         },
         {
             title: 'Achievements',
@@ -176,8 +161,7 @@ const createResumeApp = () => {
                     <li>Led the migration to Playwright, resulting in a 30% increase in test execution speed.</li>
                     <li>Recognized with [Employer Award/Recognition] for exceptional contributions to software quality and process optimization.</li>
                 </ul>
-            `,
-            img: 'https://via.placeholder.com/60?text=AC'
+            `
         }
     ];
 
@@ -187,11 +171,7 @@ const createResumeApp = () => {
         title.textContent = section.title;
         const content = document.createElement('div');
         content.innerHTML = section.content;
-        const img = document.createElement('img');
-        img.src = section.img;
-        img.alt = `${section.title} icon`;
 
-        sectionEl.appendChild(img);
         sectionEl.appendChild(title);
         sectionEl.appendChild(content);
         app.appendChild(sectionEl);
