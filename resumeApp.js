@@ -1,380 +1,332 @@
+/**
+ * RAJAT SHARAN - RESUME APPLICATION
+ * This file implements a professional, printable resume using vanilla JS and CSS.
+ * It contains the detailed professional history and technical expertise of Rajat Sharan.
+ */
+
 const createResumeApp = () => {
+    // Prevent double execution
+    if (document.getElementById('resume-app')) return;
+
     const app = document.createElement('main');
     app.id = 'resume-app';
+    app.className = 'resume-page';
 
-    // Add modern template styles
+    // Add professional styles
     const styles = document.createElement('style');
     styles.innerHTML = `
-        /* General Styles & Animations */
         :root {
-            --primary-color: #00b09b;
-            --secondary-color: #96c93d;
-            --text-color: #333;
-            --bg-light: #e6e9f0;
-            --bg-dark: #c0c6d9;
-            --card-bg: white;
-            --shadow-light: rgba(0, 0, 0, 0.1);
-            --shadow-hover: rgba(0, 0, 0, 0.2);
+            --text-color: #000;
+            --line-color: #000;
+            --font-main: 'Libre Baskerville', serif;
+            --bg-color: #f0f0f0;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background-color: var(--bg-color);
+            font-family: 'Times New Roman', Times, serif; /* Fallback for Libre Baskerville */
             color: var(--text-color);
-            padding: 20px;
-            transition: background-color 0.5s ease;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px 0;
         }
 
-        #resume-app {
-            max-width: 1000px;
+        .resume-page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
             margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 8px 16px var(--shadow-light);
-            overflow: hidden;
-            transition: box-shadow 0.3s ease;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         header {
             text-align: center;
-            background: linear-gradient(to right, #00b09b, #96c93d);
-            color: white;
-            padding: 30px 15px;
-            border-radius: 12px 12px 0 0;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 24pt;
+            letter-spacing: 2px;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .contact-info {
+            font-size: 10pt;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
             align-items: center;
-        }
-        
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-
-        header a {
-            color: #f4f4f4;
-            text-decoration: underline;
-        }
-        
         .contact-info a {
-            transition: color 0.3s ease;
-        }
-        
-        .contact-info a:hover {
-            color: #f0f0f0;
+            text-decoration: none;
+            color: inherit;
         }
 
-        /* Card-based layout for sections */
         section {
-            background: var(--card-bg);
-            border-radius: 10px;
-            margin: 20px;
-            padding: 30px;
-            box-shadow: 0 4px 8px var(--shadow-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 18px;
         }
 
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-hover);
+        h2 {
+            font-size: 13pt;
+            margin: 0;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        section h2 {
-            font-size: 1.8em;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
+        .divider {
+            height: 1px;
+            background-color: var(--line-color);
+            margin: 2px 0 10px 0;
         }
-        
-        section h2:hover {
-            color: var(--secondary-color);
+
+        .entry {
+            margin-bottom: 12px;
+        }
+
+        .row-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .institution, .job-title, .project-title { 
+            font-weight: bold; 
+            font-size: 10.5pt; 
+        }
+
+        .location, .date { 
+            font-size: 9.5pt; 
+        }
+
+        .degree, .company { 
+            font-style: italic; 
+            font-size: 10pt; 
+        }
+
+        .summary-text {
+            font-size: 10pt;
+            text-align: justify;
+            margin: 0;
         }
 
         ul {
-            list-style-type: none;
+            margin: 4px 0 0 18px;
+            padding: 0;
+            list-style-type: disc;
         }
 
         li {
-            margin-bottom: 10px;
-            position: relative;
+            font-size: 9.5pt;
+            margin-bottom: 3px;
+            text-align: justify;
         }
 
-        /* Skill Bar Enhancements */
-        .skill-bar-container {
-            background-color: #e0e0e0;
-            border-radius: 15px;
-            height: 15px;
-            overflow: hidden;
-        }
-        
-        .skill-bar {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            height: 100%;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-        }
-        
-        /* Animated icons for skills */
-        .skill-icon {
-            font-size: 1.2em;
-            margin-right: 10px;
-            color: var(--primary-color);
-            transition: transform 0.3s ease;
+        .skills-container p {
+            font-size: 10pt;
+            margin: 4px 0;
         }
 
-        li:hover .skill-icon {
-            transform: rotate(5deg) scale(1.1);
+        .skills-container b {
+            font-weight: 700;
         }
 
-        /* Micro-interactions & Transitions */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #777;
-            font-size: 0.9em;
-            margin-top: 20px;
-        }
-
-        /* Scroll-to-Top button */
-        #scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5em;
-            cursor: pointer;
-            box-shadow: 0 4px 8px var(--shadow-hover);
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.3s ease;
-            z-index: 1000;
-        }
-
-        #scroll-to-top.show {
-            opacity: 1;
-        }
-
-        #scroll-to-top:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            #resume-app {
+        @media print {
+            body { background: none; padding: 0; }
+            .resume-page { 
+                margin: 0; 
                 box-shadow: none;
-                border-radius: 0;
-            }
-
-            header {
-                border-radius: 0;
-            }
-
-            section {
-                margin: 10px 0;
-                padding: 20px;
+                width: 100%;
+                padding: 10mm 15mm;
             }
         }
     `;
     document.head.appendChild(styles);
 
-    // Add title to the resume
-    const title = document.createElement('title');
-    title.innerText = 'Resume - RAJAT SHARAN';
-    document.head.appendChild(title);
+    // Link for Font
+    const fontLink = document.createElement('link');
+    fontLink.href = "https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap";
+    fontLink.rel = "stylesheet";
+    document.head.appendChild(fontLink);
 
-    // Add header with profile image
+    // Header Content
     const header = document.createElement('header');
     header.innerHTML = `
         <h1>RAJAT SHARAN</h1>
-        <p class="contact-info">Email: <a href="mailto:errajatsharan@gmail.com">errajatsharan@gmail.com</a> | Phone: +91-8692985111</p>
-        <p class="contact-info">LinkedIn: <a href="https://linkedin.com/in/rajat-sharan-15a19244" target="_blank">linkedin.com/in/rajat-sharan-15a19244</a> | Portfolio: <a href="https://rajatsharan.github.io/Profile" target="_blank">rajatsharan.github.io/Profile</a></p>
+        <div class="contact-info">
+            <span>+91-8692985111</span>
+            <span>errajatsharan@gmail.com</span>
+            <span><a href="https://linkedin.com/in/rajat-sharan-15a19244" target="_blank">LinkedIn</a></span>
+            <span><a href="https://github.com/RajatSharan" target="_blank">Github</a></span>
+        </div>
     `;
     app.appendChild(header);
 
-    // Add sections with modern design
+    // Sections Definition
     const sections = [
         {
-            title: 'Professional Summary',
-            content: `Accomplished Automation Tester with over 11+ years of experience in driving API and UI automation testing. Expertise in designing and implementing test automation frameworks, optimizing CI/CD pipelines, and delivering scalable, high-performance software solutions.`
+            id: 'summary',
+            title: 'Summary',
+            content: `
+                <p class="summary-text">
+                    Senior Test Specialist with 11+ years of hands-on experience in QA automation,
+                    test strategy, and quality engineering for enterprise-scale applications.
+                    Expertise in building scalable automation frameworks using Playwright,
+                    Cypress, and WebdriverIO with TypeScript, integrating CI/CD pipelines,
+                    and driving measurable improvements in release quality, defect reduction,
+                    and delivery speed. Strong collaborator with proven experience working
+                    closely with engineering, product, and DevOps teams.
+                </p>`
         },
         {
-            title: 'Key Skills',
+            id: 'skills',
+            title: 'Technical Skills',
+            content: `
+                <div class="skills-container">
+                    <p><b>Programming Language :</b> JavaScript, TypeScript</p>
+                    <p><b>Automation :</b> Playwright, Cypress, WebdriverIO, Protractor, REST Assured</p>
+                    <p><b>Frameworks :</b> BDD, Cucumber, Page Object Model (POM), JUnit, Mocha, Chai</p>
+                    <p><b>Quality Engineering :</b> Automation Testing, API Testing, Functional Testing, UI Testing, Regression, Smoke, and Sanity Testing</p>
+                    <p><b>CI/CD & Tooling :</b> Jenkins, GitHub Actions, Sauce Labs, BrowserStack, Jira, Automated Test Execution, Defect Tracking</p>
+                    <p><b>Methodologies :</b> Agile, Scrum, Kanban, Feature-Driven Development (FDD)</p>
+                </div>`
+        },
+        {
+            id: 'experience',
+            title: 'Work Experience',
+            content: `
+                <div class="entry">
+                    <div class="row-between">
+                        <span class="job-title">Test Lead</span>
+                        <span class="date"><b>Nov, 2022 - Present</b></span>
+                    </div>
+                    <div class="row-between">
+                        <span class="company">Coforge Pvt. Ltd</span>
+                        <span class="location">Noida, India</span>
+                    </div>
+                    <ul>
+                        <li>Designed and developed a scalable Playwright automation framework using TypeScript for enterprise web applications</li>
+                        <li>Integrated automation suites with Jenkins and GitHub Actions to enable continuous testing in CI/CD pipelines</li>
+                        <li>Automated E2E and API test scenarios, increasing regression coverage by 35% and reducing execution time by 55%</li>
+                        <li>Implemented robust selectors, fixtures, retries, and reporting to significantly reduce flaky tests</li>
+                        <li>Collaborated closely with developers to enable shift-left testing and early defect detection</li>
+                        <li>Migrated legacy Cypress-based framework to Playwright, improving stability and execution speed</li>
+                        <li>Mentored junior engineers on automation best practices and framework usage</li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <div class="row-between">
+                        <span class="job-title">Senior QA Automation Engineer</span>
+                        <span class="date"><b>Oct 2016 – Oct 2022</b></span>
+                    </div>
+                    <div class="row-between">
+                        <span class="company">Dotsquares</span>
+                        <span class="location">Jaipur, Rajasthan</span>
+                    </div>
+                    <ul>
+                        <li>Built and enhanced automation frameworks using Cypress and WebdriverIO</li>
+                        <li>Improved execution speed by 30% through framework optimization and parallel runs.</li>
+                        <li>Automated API validations using Postman and SoapUI to ensure backend reliability.</li>
+                        <li>Executed cross-browser, regression, and smoke test suites across multiple environments.</li>
+                        <li>Integrated automated tests with CI pipelines and maintained test stability.</li>
+                        <li>Guided junior QA engineers in automation scripting and debugging.</li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <div class="row-between">
+                        <span class="job-title">QA Engineer</span>
+                        <span class="date"><b>July 2014 – Oct 2016</b></span>
+                    </div>
+                    <div class="row-between">
+                        <span class="company">Datamatics Global Services</span>
+                        <span class="location">Mumbai</span>
+                    </div>
+                    <ul>
+                        <li>Performed functional and regression testing for MS Dynamics CRM, ensured robust validation of core business workflows.</li>
+                        <li>Automated UI test scenarios using Selenium, boosted testing efficiency and significantly reduced manual effort.</li>
+                        <li>Improved defect lifecycle management by streamlining resolution processes and strengthening collaboration between QA and Development Teams.</li>
+                        <li>Created and executed test scripts in alignment with Agile delivery practices to support rapid, iterative releases.</li>
+                    </ul>
+                </div>`
+        },
+        {
+            id: 'achievements',
+            title: 'Key Achievements',
             content: `
                 <ul>
-                    <li data-skill-level="95"><span class="skill-icon fas fa-code"></span>Automation Testing Tools: Playwright, Cypress, WebdriverIO, Selenium, Postman, RestAssured, SoapUI, APIdog</li>
-                    <li data-skill-level="90"><span class="skill-icon fas fa-chart-line"></span>Performance Testing Tools: JMeter, K6</li>
-                    <li data-skill-level="85"><span class="skill-icon fas fa-terminal"></span>Languages & Frameworks: JavaScript, TypeScript, Cucumber, Mocha</li>
-                    <li data-skill-level="80"><span class="skill-icon fas fa-cogs"></span>CI/CD Tools: Jenkins, CircleCI</li>
-                    <li data-skill-level="75"><span class="skill-icon fas fa-database"></span>Databases: MySQL</li>
-                    <li data-skill-level="70"><span class="skill-icon fas fa-users"></span>CRM Platforms: MS Dynamics CRM, Salesforce</li>
-                    <li data-skill-level="90"><span class="skill-icon fas fa-handshake"></span>Methodologies: Agile, Scrum, TDD, BDD</li>
-                    <li data-skill-level="85"><span class="skill-icon fas fa-network-wired"></span>Additional Skills: XPath, CSS Selectors, Channel Integration Testing, API Automation</li>
-                </ul>
-            `
+                    <li>Achieved automation coverage for 85% of regression cases, shrinking the test cycle duration from 10 days to 5 days.</li>
+                    <li>Led migration to Playwright, resulted in 30% uplift in execution speed and a more stable, scalable automation framework.</li>
+                    <li>Managed optimization of CI/CD pipelines deployment quality, reduced release-related issues by 40%.</li>
+                </ul>`
         },
         {
-            title: 'Professional Experience',
-            content: `
-                <ul>
-                    <li><strong>Test Specialist</strong>, Coforge – Noida (Oct 2022 – Present): Led the development of scalable UI and API automation frameworks, successfully increasing test coverage by 40% and improving testing efficiency.</li>
-                    <li><strong>Senior QA Engineer</strong>, Dotsquares – Jaipur (Nov 2016 – Oct 2022): Streamlined backend processes by automating API workflows, which resulted in flawless and efficient functionality.</li>
-                    <li><strong>Test Engineer</strong>, Datamatics Global Services – Mumbai (Nov 2014 – Oct 2016): Conducted comprehensive functional and regression testing.</li>
-                </ul>
-            `
-        },
-        {
-            title: 'Education',
-            content: `B.Tech in Information Technology, Arya Institute of Engineering & Technology, Rajasthan Technical University (2013)`
-        },
-        {
+            id: 'certifications',
             title: 'Certifications',
             content: `
                 <ul>
-                    <li>Certified Scrum Master (CSM): Scrum Alliance (August 2020)</li>
-                    <li>Certified Scrum Product Owner (CSPO): Scrum Alliance (June 2022)</li>
-                    <li>ISTQB Foundation Level: ITB India (August 2014)</li>
-                </ul>
-            `
+                    <li>Certified Scrum Product Owner (CSPO)</li>
+                    <li>Certified Scrum Master(CSM)</li>
+                    <li>ISTQB Certified Tester – Foundation Level</li>
+                </ul>`
         },
         {
-            title: 'Achievements',
+            id: 'education',
+            title: 'Education',
             content: `
-                <ul>
-                    <li>Automated 85% of regression tests, reducing test cycle time by 50%.</li>
-                    <li>Led the migration to Playwright, resulting in a 30% increase in test execution speed.</li>
-                    <li>Recognized with Outstanding Performance Award for exceptional contributions to test automation.</li>
-                </ul>
-            `
+                <div class="entry">
+                    <div class="row-between">
+                        <span class="institution">Rajasthan Technical University</span>
+                        <span class="location">Jaipur</span>
+                    </div>
+                    <div class="row-between">
+                        <span class="degree">Bachelor of Technology in Computer Science & Engineering</span>
+                        <span class="date">July 2010 - June 2013</span>
+                    </div>
+                </div>`
         }
     ];
 
-    sections.forEach(section => {
-        const sectionEl = document.createElement('section');
-        sectionEl.classList.add('fade-in'); // Add fade-in class
-        const title = document.createElement('h2');
-        title.textContent = section.title;
-        const content = document.createElement('div');
-        content.innerHTML = section.content;
+    // Build sections
+    sections.forEach(sec => {
+        const sectionWrapper = document.createElement('section');
+        sectionWrapper.id = sec.id;
+        
+        const h2 = document.createElement('h2');
+        h2.textContent = sec.title;
+        
+        const divider = document.createElement('div');
+        divider.className = 'divider';
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.innerHTML = sec.content;
 
-        sectionEl.appendChild(title);
-        sectionEl.appendChild(content);
-        app.appendChild(sectionEl);
+        sectionWrapper.appendChild(h2);
+        sectionWrapper.appendChild(divider);
+        sectionWrapper.appendChild(contentDiv);
+        app.appendChild(sectionWrapper);
     });
-
-    // Add footer
-    const footer = document.createElement('footer');
-    footer.innerHTML = `
-        © 2025 RAJAT SHARAN. All Rights Reserved.
-    `;
-    app.appendChild(footer);
 
     document.body.appendChild(app);
-
-    // Add scroll-based animations and skill bar fills
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Animate the section to fade in
-                entry.target.classList.add('visible');
-
-                // If the section is 'Key Skills', animate the skill bars
-                if (entry.target.querySelector('h2').textContent === 'Key Skills') {
-                    const skillItems = entry.target.querySelectorAll('[data-skill-level]');
-                    skillItems.forEach(item => {
-                        const level = item.dataset.skillLevel;
-                        const skillBarContainer = document.createElement('div');
-                        skillBarContainer.classList.add('skill-bar-container');
-
-                        const skillBar = document.createElement('div');
-                        skillBar.classList.add('skill-bar');
-                        skillBar.style.width = `${level}%`;
-
-                        skillBarContainer.appendChild(skillBar);
-                        item.appendChild(skillBarContainer);
-                    });
-                }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    // Observe all sections for animation
-    document.querySelectorAll('section.fade-in').forEach(section => {
-        observer.observe(section);
-    });
-
-    // Initial check for elements already in view on page load
-    document.querySelectorAll('section.fade-in').forEach(section => {
-        if (section.getBoundingClientRect().top < window.innerHeight) {
-            section.classList.add('visible');
-        }
-    });
-
-    // Add Scroll-to-Top Button
-    const scrollToTopBtn = document.createElement('button');
-    scrollToTopBtn.id = 'scroll-to-top';
-    scrollToTopBtn.innerHTML = `&uarr;`; // Up arrow character
-    document.body.appendChild(scrollToTopBtn);
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
-    });
-
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
 };
 
-window.onload = createResumeApp;
+// Application Mounting Logic
+const init = () => {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', createResumeApp);
+    } else {
+        createResumeApp();
+    }
+};
+
+init();
