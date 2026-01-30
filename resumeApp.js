@@ -1,5 +1,3 @@
-// Resume Web Application with Modern Template Design and ATS Optimization
-
 const createResumeApp = () => {
     const app = document.createElement('main');
     app.id = 'resume-app';
